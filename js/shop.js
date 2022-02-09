@@ -92,8 +92,21 @@ function calculateTotal() {
 
 // Exercise 4
 function generateCart() {
-    // Using the "cartlist" array that contains all the items in the shopping cart, 
-    // generate the "cart" array that does not contain repeated items, instead each item of this array "cart" shows the quantity of product.
+    let cantidad = 0;
+    if (cart.length == 0) {
+        cart.push(cartList[0]);
+        cart[0].cantidad = 1;
+    }
+    console.log(cart)
+
+    for(let i=0; i<cartList.length; i++) {
+        if(cartList[i].id == cart[i].id){
+            cantidad++;
+        }else{
+            cart.push(cartList[i]);
+            cart[i].cantidad = 1;
+        }
+    }
 }
 
 // Exercise 5
