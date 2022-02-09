@@ -76,7 +76,9 @@ function buy(id) {
 
 // Exercise 2
 function cleanCart() {
-
+    for (let i = cartList.length; i > 0; i--) {
+        cartList.pop();
+    }
 }
 
 // Exercise 3
