@@ -99,10 +99,10 @@ function generateCart() {
     }
     console.log(cart)
 
-    for(let i=0; i<cartList.length; i++) {
-        if(cartList[i].id == cart[i].id){
+    for (let i = 0; i < cartList.length; i++) {
+        if (cartList[i].id == cart[i].id) {
             cantidad++;
-        }else{
+        } else {
             cart.push(cartList[i]);
             cart[i].cantidad = 1;
         }
@@ -111,7 +111,25 @@ function generateCart() {
 
 // Exercise 5
 function applyPromotionsCart() {
-    // Apply promotions to each item in the array "cart"
+    let total = 0;
+    //Creamos la constante del descuento de los 2/3 que seria 0.66
+    const descuentoMezclaPastel = 0.66;
+    for (i = 0; i < cart.length; i++) {
+        //Evaluamos si el producto es oil o la mezcla para pasteles
+        if (cart[i].id == 1 || cart[i].id == 3) {
+            //Descuento del producto oil
+            if (cart[i].id == 1) {
+                if (cart[i].quantity >= 3) {
+                    cart[i].price = 10;
+                }
+                //Descuento de la mezcla para pasteles    
+            } else if (cart[i].id == 3) {
+                if (cart[i].quantity >= 10) {
+                    cart[i].price = cart[i].price * descuentoMezclaPastel;
+                }
+            }
+        }
+    }
 }
 
 
