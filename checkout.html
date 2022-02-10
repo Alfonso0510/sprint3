@@ -48,32 +48,35 @@
             <div class="col-sm-6">
                 <div class="mt-3 row">
                     <h5 class="my-auto">First Name :</h5>
-                    <input class="ml-3 name input rounded p-2" type="text" placeholder="First Name" />
-                    <p id="errorName">Numbers in the name are not valid</p>
+                    <input class="ml-3 name input rounded p-2" type="text" placeholder="First Name" required/>
+                    <p id="errorName">Numbers in the name are not valid or too short</p>
                 </div>
                 <div class="mt-3 row ">
                     <h5 class="my-auto">Email :</h5>
-                    <input class="ml-3 input rounded p-2" type="email" placeholder="Email" />
+                    <input class="ml-3 input email rounded p-2" type="email" placeholder="Email" required/>
+                    <p id="errorMail">Please enter a valid email</p>
                 </div>
                 <div class="mt-3 row ">
                     <h5 class="my-auto">Address :</h5>
-                    <input class="ml-3 input rounded p-2" type="text" placeholder="Address" />
+                    <input class="ml-3 input address rounded p-2" type="text" placeholder="Address" required/>
+                    <p id="errorAddress">Please enter a valid address</p>
                 </div>
             </div>
             <div class="col-sm-6">
                 <div class="mt-3 row">
                     <h5 class="my-auto name my-auto">Last Name :</h5>
-                    <input class="ml-3 input rounded p-2" type="text" placeholder="Last Name" />
+                    <input class="ml-3 input surname rounded p-2" type="text" placeholder="Last Name" required/>
+                    <p id="errorLastName">Numbers in the lastname are not valid or too short</p>
                 </div>
                 <div class="mt-3 row">
                     <h5 class="my-auto my-auto">Password :</h5>
                     <input class="ml-3 input password rounded p-2" title="(4-8 characters)" type="password" minlength="4"
-                        maxlength="8" placeholder="Password" />
+                        maxlength="8" placeholder="Password" required/>
                     <p id="errorPassword">Enter a correct password</p>
                 </div>
                 <div class="mt-3 row">
                     <h5 class="my-auto my-auto">Phone Number :</h5>
-                    <input class="ml-3 phone input rounded p-2" type="number" placeholder="Phone No." />
+                    <input class="ml-3 phone input rounded p-2" type="number" placeholder="Phone No." required/>
                     <p id="errorPhone">Invalid phone number!!</p>
                 </div>
             </div>

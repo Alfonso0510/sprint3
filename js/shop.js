@@ -74,10 +74,8 @@ function buy(id) {
 }
 
 // Exercise 2
-function cleanCart() {
-    for (let i = cartList.length; i > 0; i--) {
-        cartList.pop();
-    }
+for (let i = cartList.length; i > 0; i--) {
+    cartList.pop();
 }
 
 // Exercise 3
@@ -90,44 +88,45 @@ function calculateTotal() {
 }
 
 // Exercise 4
- function generateCart() {
+function generateCart() {
     let cantidad = 0;
-     if (cart.length == 0) {
-         cart[0].cantidad = 1;
-     }
-     console.log(cart)
-
-    for (let i = 0; i < cartList.length; i++) {
-        if (cartList[i].id == cart[i].id) {
-            cantidad++;
-        } else {
-          cart.push(cartList[i]);
-          cart[i].cantidad = 1;
-       }
+    if (cart.length == 0) {
+        cart.push(cartList[0]);
+        cart[0].cantidad = 1;
     }
- }
+    console.log(cart)
+
+    for(let i=0; i<cartList.length; i++) {
+        if(cartList[i].id == cart[i].id){
+            cantidad++;
+        }else{
+            cart.push(cartList[i]);
+            cart[i].cantidad = 1;
+        }
+    }
+}
 
 // Exercise 5
 function applyPromotionsCart() {
     let total = 0;
-    //Creamos la constante del descuento de los 2/3 que seria 0.66
-    const descuentoMezclaPastel = 0.66;
-    for (i = 0; i < cart.length; i++) {
-        //Evaluamos si el producto es oil o la mezcla para pasteles
-        if (cart[i].id == 1 || cart[i].id == 3) {
-            //Descuento del producto oil
-            if (cart[i].id == 1) {
-                if (cart[i].quantity >= 3) {
-                    cart[i].price = 10;
-                }
+        //Creamos la constante del descuento de los 2/3 que seria 0.66
+        const descuentoMezclaPastel = 0.66;
+        for (i = 0; i < cart.length; i++) {
+            //Evaluamos si el producto es oil o la mezcla para pasteles
+            if(cart[i].id==1 || cart[i].id==3){
+                //Descuento del producto oil
+                if(cart[i].id == 1){
+                    if(cart[i].quantity>=3){
+                        cart[i].price=10;
+                    }
                 //Descuento de la mezcla para pasteles    
-            } else if (cart[i].id == 3) {
-                if (cart[i].quantity >= 10) {
-                    cart[i].price = cart[i].price * descuentoMezclaPastel;
+                }else if(cart[i].id == 3){
+                    if(cart[i].quantity>=10){
+                        cart[i].price = cart[i].price * descuentoMezclaPastel;
+                    }
                 }
             }
         }
-    }
 }
 
 
@@ -150,3 +149,6 @@ function removeFromCart(id) {
 function printCart() {
     // Fill the shopping cart modal manipulating the shopping cart dom
 }
+
+console.log(cartList)
+
