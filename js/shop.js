@@ -71,7 +71,6 @@ function buy(id) {
         }
     }
     console.log(cartList)
-    generateCart();
 }
 
 // Exercise 2
@@ -91,23 +90,22 @@ function calculateTotal() {
 }
 
 // Exercise 4
-function generateCart() {
+ function generateCart() {
     let cantidad = 0;
-    if (cart.length == 0) {
-        cart.push(cartList[0]);
-        cart[0].cantidad = 1;
-    }
-    console.log(cart)
+     if (cart.length == 0) {
+         cart[0].cantidad = 1;
+     }
+     console.log(cart)
 
     for (let i = 0; i < cartList.length; i++) {
         if (cartList[i].id == cart[i].id) {
             cantidad++;
         } else {
-            cart.push(cartList[i]);
-            cart[i].cantidad = 1;
-        }
+          cart.push(cartList[i]);
+          cart[i].cantidad = 1;
+       }
     }
-}
+ }
 
 // Exercise 5
 function applyPromotionsCart() {
