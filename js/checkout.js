@@ -25,7 +25,7 @@ function validate() {
     };
 
     //Evaluacion longitud apellido
-    if((lastName.value.length < 3) || (validateOnlyLetters(nameToEvaluate.value))) {
+    if((lastName.value.length < 3) || (validateOnlyLetters(lastName.value))) {
         lastName.style.border = '2px solid red';
         document.getElementById('errorLastName').style.display = 'block';
     };
