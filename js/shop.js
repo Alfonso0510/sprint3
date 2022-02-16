@@ -96,10 +96,10 @@ function generateCart() {
     }
     console.log(cart)
 
-    for(let i=0; i<cartList.length; i++) {
-        if(cartList[i].id == cart[i].id){
+    for (let i = 0; i < cartList.length; i++) {
+        if (cartList[i].id == cart[i].id) {
             cantidad++;
-        }else{
+        } else {
             cart.push(cartList[i]);
             cart[i].cantidad = 1;
         }
@@ -109,24 +109,24 @@ function generateCart() {
 // Exercise 5
 function applyPromotionsCart() {
     let total = 0;
-        //Creamos la constante del descuento de los 2/3 que seria 0.66
-        const descuentoMezclaPastel = 0.66;
-        for (i = 0; i < cart.length; i++) {
-            //Evaluamos si el producto es oil o la mezcla para pasteles
-            if(cart[i].id==1 || cart[i].id==3){
-                //Descuento del producto oil
-                if(cart[i].id == 1){
-                    if(cart[i].quantity>=3){
-                        cart[i].price=10;
-                    }
+    //Creamos la constante del descuento de los 2/3 que seria 0.66
+    const descuentoMezclaPastel = 0.66;
+    for (i = 0; i < cart.length; i++) {
+        //Evaluamos si el producto es oil o la mezcla para pasteles
+        if (cart[i].id == 1 || cart[i].id == 3) {
+            //Descuento del producto oil
+            if (cart[i].id == 1) {
+                if (cart[i].quantity >= 3) {
+                    cart[i].price = 10;
+                }
                 //Descuento de la mezcla para pasteles    
-                }else if(cart[i].id == 3){
-                    if(cart[i].quantity>=10){
-                        cart[i].price = cart[i].price * descuentoMezclaPastel;
-                    }
+            } else if (cart[i].id == 3) {
+                if (cart[i].quantity >= 10) {
+                    cart[i].price = cart[i].price * descuentoMezclaPastel;
                 }
             }
         }
+    }
 }
 
 
@@ -134,9 +134,26 @@ function applyPromotionsCart() {
 
 // Exercise 7
 function addToCart(id) {
-    // Refactor previous code in order to simplify it 
-    // 1. Loop for to the array products to get the item to add to cart
-    // 2. Add found product to the cart array or update its quantity in case it has been added previously.
+    //Si el array cart esta vacio, se añade el que se le ha pasado por parametros
+    if (cart.length == 0) {
+        cart.push(products[id - 1]);
+        cart[id - 1].quantity = 1;
+        //Si no esta vacio entra en esta bloque para evaluar si existe o no y sumar la cantidad
+    } else if (cart.length > 0) {
+        for (let i = 0; i < cart.length; i++) {
+            //Si existe y la cantidad es mayor de 0, no se añade al array pero incrementa la cantidad
+            if (id == cart[i].id && cart[i].quantity > 0) {
+                console.log('Se le suma uno al cantidad')
+                cart[i].quantity++;
+            } else {
+                //Si no existe o la cantidad fuera 0 se añade al array y pasamos como cantidad 1
+                cart.push(products[id]);
+                cart[i].quantity=1;
+            }
+        }
+    }
+
+    console.log(cart);
 }
 
 // Exercise 8
@@ -152,3 +169,4 @@ function printCart() {
 
 console.log(cartList)
 
+// if(id == cart[i].id && cart[i].quantity==0
