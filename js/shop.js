@@ -65,6 +65,7 @@ var total = 0;
 
 // Exercise 1
 function buy(id) {
+    //Recorremos el array products, si el id coindice con el id pasado por parametro se añade a carlist
     for (let i = 0; i < products.length; i++) {
         if (id == products[i].id) {
             cartList.push(products[i]);
@@ -74,41 +75,47 @@ function buy(id) {
 }
 
 // Exercise 2
-for (let i = cartList.length; i > 0; i--) {
-    cartList.pop();
+function cleanCart() {
+    //Ponemos el array a logitud 0
+    cartList.length = 0;
 }
 
 // Exercise 3
 function calculateTotal() {
+    //Recorremos el array sumando los importes de cada producto
     let precio = 0;
+    let total = 0;
     for (let i = 0; i < cartList.length; i++) {
+        applyPromotionsCart()
+        //Extraemos solo la propiedad precio de cada elemento
         precio = cartList[i].price;
         total = total + precio
     }
+    console.log(total);
 }
 
 // Exercise 4
 function generateCart() {
-    let cantidad = 0;
-    if (cart.length == 0) {
-        cart.push(cartList[0]);
-        cart[0].cantidad = 1;
-    }
-    console.log(cart)
-
-    for (let i = 0; i < cartList.length; i++) {
-        if (cartList[i].id == cart[i].id) {
-            cantidad++;
-        } else {
-            cart.push(cartList[i]);
-            cart[i].cantidad = 1;
+    //Recorremos el array para ver si existe el producto
+    for (i = 0; i < cartList.length; i++) {
+        var producto = cartList[i];
+        var itemProducto = cart.find(productoCart => productoCart.name === producto.name);
+        // Si no existe el producto creamos uno con cantidad 1
+        if (itemProducto == null) {
+            itemProducto = producto;
+            itemProducto.quantity = 1;
+            cart.push(itemProducto);
+        }
+        // Si ya existe el producto le sumamos 1 al total de la cantidad
+        else {
+            itemProducto.quantity = itemProducto.quantity + 1;
         }
     }
+    console.log(cart);
 }
-
 // Exercise 5
 function applyPromotionsCart() {
-    let total = 0;
+    total = 0;
     //Creamos la constante del descuento de los 2/3 que seria 0.66
     const descuentoMezclaPastel = 0.66;
     for (i = 0; i < cart.length; i++) {
@@ -134,25 +141,19 @@ function applyPromotionsCart() {
 
 // Exercise 7
 function addToCart(id) {
-    //Si el array cart esta vacio, se añade el que se le ha pasado por parametros
-    if (cart.length == 0) {
-        cart.push(products[id - 1]);
-        cart[id - 1].quantity = 1;
-        //Si no esta vacio entra en esta bloque para evaluar si existe o no y sumar la cantidad
-    } else if (cart.length > 0) {
-        for (let i = 0; i < cart.length; i++) {
-            //Si existe y la cantidad es mayor de 0, no se añade al array pero incrementa la cantidad
-            if (id == cart[i].id && cart[i].quantity > 0) {
-                console.log('Se le suma uno al cantidad')
-                cart[i].quantity++;
-            } else {
-                //Si no existe o la cantidad fuera 0 se añade al array y pasamos como cantidad 1
-                cart.push(products[id]);
-                cart[i].quantity=1;
-            }
-        }
-    }
+    let product = products[id-1] ;
+    let itemProduct = cart.find( productCart => productCart.name === product.name);
 
+    //Evaluamos si el producto existe o no, si es que no se añade y se pone cantidad a 1
+    if (itemProduct == null) {
+        itemProduct = product;
+        itemProduct.quantity = 1;
+        cart.push(itemProduct);
+    }
+    else {
+        //Si el producto ya existe solamente se suma 1 a la cantidad
+        itemProduct.quantity = itemProduct.quantity + 1 ;
+    }
     console.log(cart);
 }
 
